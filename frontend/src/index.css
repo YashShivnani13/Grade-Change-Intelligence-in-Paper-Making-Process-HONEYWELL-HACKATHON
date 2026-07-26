@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #0D1117;
+  --color-surface: #161B22;
+  --color-border: #30363D;
+  --color-text-primary: #E6EDF3;
+  --color-text-secondary: #8B949E;
+  --color-nominal: #3FB950;
+  --color-warning: #D29922;
+  --color-critical: #F85149;
+  --color-advisory: #58A6FF;
+  --font-data: 'JetBrains Mono', monospace;
+  --font-ui: 'Inter', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Custom animations for industrial HMI */
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.02); }
+}
+
+@keyframes pulse-critical {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(248, 81, 73, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(248, 81, 73, 0); }
+}
+
+@keyframes scan-reload {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+@keyframes flow-pulse {
+  0% { stroke-dashoffset: 20; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes slide-in-top {
+  0% { opacity: 0; transform: translateY(-8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes confidence-grow {
+  0% { width: 0%; }
+  100% { width: var(--target-width, 100%); }
+}
+
+@keyframes learning-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+  50% { box-shadow: 0 0 20px 4px rgba(52, 211, 153, 0.25); }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2s infinite ease-in-out;
+}
+
+.animate-pulse-critical {
+  animation: pulse-critical 1.5s infinite ease-in-out;
+}
+
+.animate-flow-line {
+  stroke-dasharray: 6 4;
+  animation: flow-pulse 1s linear infinite;
+}
+
+/* Custom scrollbars for logs */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #161B22;
+}
+::-webkit-scrollbar-thumb {
+  background: #30363D;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #484F58;
+}
